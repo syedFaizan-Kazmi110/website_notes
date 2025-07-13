@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title%}Home{% endblock %}
+
+{% block content %}
+
+<div class="container modern-home-container animate__animated animate__fadeInUp">
+<h1 class="text-center mb-5 display-4 text-primary animate__animated animate__fadeInDown">
+<i class="fas fa-clipboard-list me-3"></i> My Notes
+</h1>
+
+<form method="POST" class="mb-5 p-4 bg-white rounded-4 shadow-lg animate__animated animate__zoomIn">
+    <div class="form-floating mb-3">
+        <textarea name="note" id="note" class="form-control" placeholder="Write your note here..." style="height: 120px" required></textarea>
+        <label for="note">Write a new note...</label>
+    </div>
+    <div class="d-grid gap-2 col-md-8 mx-auto">
+        <button type="submit" class="btn btn-primary btn-lg shadow-sm animate__animated animate__pulse animate__infinite" style="--animate-duration: 2s;">
+            <i class="fas fa-plus-circle me-2"></i> Add Note
+        </button>
+    </div>
+</form>
+
+<div id="notes-list-container" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    {% for note in user.notes %}
+    {# The ID is crucial for JavaScript deletion animation #}
+    <div class="col animate__animated animate__fadeInUp animate__delay-{{ loop.index0 * 0.1 }}s" id="note-{{ note.id }}">
+        <div class="card h-100 shadow-sm border-0 note-card">
+            <div class="card-body">
+                <p class="card-text">{{ note.data }}</p>
+            </div>
+            <div class="card-footer d-flex justify-content-between align-items-center bg-light border-0">
+                <small class="text-muted">{{ note.date.strftime('%Y-%m-%d %H:%M') }}</small>
+                <button type="button" class="btn btn-outline-danger btn-sm delete-note-btn" onclick="deleteNote({{ note.id }})">
+                    <i class="fas fa-trash-alt"></i> Delete
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% if not user.notes %}
+<div class="text-center py-5 animate__animated animate__fadeInUp">
+    <i class="fas fa-folder-open fa-5x text-muted mb-3"></i>
+    <p class="lead text-muted">It looks a little empty here!</p>
+    <p class="text-secondary">Start by adding your first note using the form above.</p>
+</div>
+{% endif %}
+
+</div>
+{% endblock %}

@@ -1,0 +1,287 @@
+/* website/static/style.css */
+
+/* --- General Body & Typography --- */
+body {
+    font-family: 'Poppins', sans-serif; /* Using Google Font Poppins */
+    background: linear-gradient(135deg, #6dd5ed, #2193b0); /* A nice blue gradient */
+    min-height: 100vh; /* Ensure background covers full viewport height */
+    display: flex; /* Use flexbox for centering content */
+    flex-direction: column; /* Stack items vertically */
+    color: #343a40; /* Dark gray for text */
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll from animations */
+}
+
+/* --- Navbar Styling --- */
+.navbar {
+    background-color: #34495e !important; /* Dark blue/gray */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Deeper shadow for depth */
+    transition: all 0.3s ease-in-out;
+    z-index: 1030; /* Bootstrap's default z-index for fixed-top navbars */
+}
+
+.navbar-brand {
+    font-weight: 600;
+    font-size: 1.6rem;
+    color: #ecf0f1 !important; /* Light gray */
+    letter-spacing: 0.8px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.03); /* Slight scale on hover */
+    color: #ffffff !important;
+}
+
+.navbar-nav .nav-link {
+    color: #ecf0f1 !important; /* Light gray */
+    margin-left: 20px;
+    transition: color 0.3s ease, transform 0.2s ease-in-out;
+    position: relative; /* For underline effect */
+    font-weight: 500;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #bdc3c7 !important; /* Lighter gray on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+/* Underline effect for active/hover nav links */
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #a2d2ff; /* Underline color */
+    transition: width 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
+    width: 100%;
+}
+
+.navbar-toggler {
+    border-color: rgba(236, 240, 241, 0.5) !important;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28236, 240, 241, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+/* --- Flash Message Alerts --- */
+.alert {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    animation: fadeInDown 0.5s ease-out; /* Animates alerts appearing */
+    position: relative; /* For close button positioning */
+    z-index: 2000; /* Increased z-index to ensure it's always on top of navbar */
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+}
+
+.alert-danger { /* For 'error' category */
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+}
+
+.alert-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border-color: #bee5eb;
+}
+
+.btn-close {
+    font-size: 1.1rem;
+    color: inherit;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.btn-close:hover {
+    opacity: 1;
+}
+
+/* --- Auth Pages (Login/Sign Up) Styling --- */
+/* Center the auth forms vertically and horizontally */
+main {
+    flex-grow: 1; /* Allows main content to take up available space */
+    display: flex;
+    flex-direction: column; /* Stack items vertically within main */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    padding-top: 70px; /* Space for fixed navbar */
+    padding-bottom: 30px; /* Some padding at the bottom */
+}
+
+.auth-container {
+    width: 100%; /* Take full width of its flex container */
+    max-width: 450px; /* Max width for forms */
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* Stronger shadow for forms */
+    animation: fadeInUp 0.7s ease-out; /* Animation for forms appearing */
+    margin: auto; /* Auto margins to help centering within flex container */
+}
+
+.auth-container h3 {
+    color: #34495e;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.form-floating .form-control {
+    border-radius: 8px;
+    border-color: #ced4da;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-floating .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out, box-shadow 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* --- Home Page Specific Styles --- */
+.modern-home-container {
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white */
+    backdrop-filter: blur(8px); /* Frosted glass effect */
+    border-radius: 20px; /* More rounded corners */
+    padding: 40px 60px; /* More generous padding */
+    margin-top: 80px; /* Adjust top margin for fixed navbar */
+    margin-bottom: 50px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25); /* Deeper, softer shadow */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border */
+    max-width: 1300px; /* Wider container for the home page */
+    width: 100%; /* Ensures it takes full width up to max-width */
+}
+
+.modern-home-container h1 {
+    color: #34495e;
+    font-weight: 700;
+    font-size: 2.8rem;
+    margin-bottom: 30px;
+}
+
+/* Note card specific styles */
+.note-card {
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    height: 100%; /* Ensure cards in a row have equal height */
+    background-color: #fff;
+    border: 1px solid #e0e6eb; /* Light border */
+}
+
+.note-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.18) !important;
+    border-color: #007bff; /* Highlight border on hover */
+}
+
+.note-card .card-body {
+    padding: 25px;
+    font-size: 1.05rem;
+    color: #4a4a4a;
+}
+
+.note-card .card-text {
+    font-size: 1.1rem;
+    color: #333;
+    white-space: pre-wrap; /* Preserves whitespace and line breaks */
+    word-wrap: break-word; /* Breaks long words */
+}
+
+.note-card .card-footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+    padding: 15px 25px;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.delete-note-btn {
+    color: #dc3545; /* Red color for delete icon/text */
+    border-color: #dc3545;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.delete-note-btn:hover {
+    background-color: #dc3545;
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+/* --- Animation for Deleting Notes --- */
+.note-deleting {
+    opacity: 0;
+    transform: translateX(-50px); /* Moves it slightly left while fading */
+    /* Adjust transition durations as needed for desired speed */
+    transition: opacity 0.5s ease-out, 
+                transform 0.5s ease-out, 
+                height 0.5s ease-out 0.2s, /* Add a slight delay for height collapse */
+                margin-bottom 0.5s ease-out 0.2s; /* and margin collapse */
+    height: 0 !important; /* Collapses the height */
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+    overflow: hidden; /* Hide overflow during collapse */
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) { /* For medium and small devices */
+    .modern-home-container {
+        padding: 30px;
+        margin-top: 70px;
+        margin-bottom: 30px;
+    }
+    .modern-home-container h1 {
+        font-size: 2.2rem;
+    }
+    .auth-container {
+        padding: 30px;
+        margin-top: 70px;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 768px) { /* For small devices */
+    .modern-home-container {
+        padding: 20px;
+    }
+    .modern-home-container h1 {
+        font-size: 1.8rem;
+    }
+    .auth-container {
+        padding: 25px;
+    }
+    .navbar-nav .nav-link {
+        margin-left: 0; /* Remove left margin for stacked links */
+        text-align: center;
+    }
+    .navbar-brand {
+        font-size: 1.3rem;
+    }
+}

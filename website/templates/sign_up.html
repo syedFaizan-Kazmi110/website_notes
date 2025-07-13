@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title%}Sign up{% endblock %}
+
+{% block content %}
+
+<div class="auth-container">
+<form method="POST">
+<h3 class="text-center mb-4">Sign Up</h3>
+<div class="form-floating mb-3">
+<input
+type="email"
+class="form-control"
+id="email"
+name="email"
+placeholder="name@example.com"
+required
+/>
+<label for="email">Email address</label>
+</div>
+
+<div class="form-floating mb-3">
+  <input
+    type="text"
+    class="form-control"
+    id="first_name"
+    name="first_name"
+    placeholder="First Name"
+    required
+  />
+  <label for="first_name">First Name</label>
+</div>
+
+<div class="form-floating mb-3">
+  <input
+    type="password"
+    class="form-control"
+    id="password1"
+    name="password1"
+    placeholder="Password"
+    required
+  />
+  <label for="password1">Password</label>
+</div>
+
+<div class="form-floating mb-4">
+  <input
+    type="password"
+    class="form-control"
+    id="password2"
+    name="password2"
+    placeholder="Confirm Password"
+    required
+  />
+  <label for="password2">Confirm Password</label>
+</div>
+
+<button type="submit" class="btn btn-primary w-100">Sign Up</button>
+
+</form>
+</div>
+{% endblock %}
